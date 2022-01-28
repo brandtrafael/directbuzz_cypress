@@ -1,0 +1,16 @@
+{
+  "name": "cypress-directbuzz",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "npx cypress open"
+  },
+  "dependencies": {
+    "cypress": "^9.3.1"
+  },
+  "devDependencies": {
+    "typescript": "^4.5.5",
+    "faker": "5.5.3"
+  }
+}
