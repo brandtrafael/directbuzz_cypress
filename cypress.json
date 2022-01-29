@@ -1,3 +1,4 @@
 {
-  "baseUrl": "https://app-qa.directflow.com.br/"
+  "baseUrl": "https://app-qa.directflow.com.br/",
+  "requestTimeout": 2000000
 }

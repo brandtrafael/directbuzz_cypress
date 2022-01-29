@@ -13,8 +13,8 @@ export default {
   },
   data: function () {
     return {
-      name: faker.commerce.product() + faker.random.number(2),
-      keyword: faker.commerce.product() + faker.random.number(2),
+      name: faker.random.alphaNumeric(8),
+      keyword: faker.random.alphaNumeric(8),
       products: this.generateProducts(5),
       initialMessage: faker.random.words(20),
       finalMessage: faker.random.words(20),
