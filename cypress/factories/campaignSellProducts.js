@@ -11,13 +11,17 @@ export default {
     }
     return arrayProducts;
   },
-  data: function () {
+  data: function (fields) {
+    const newFields = fields.reduce((acc, currentField) => {
+      acc[currentField.name] = faker.random[currentField.typeData](
+        currentField.numberData
+      );
+      return acc;
+    }, {});
+
     return {
-      name: faker.random.alphaNumeric(8),
-      keyword: faker.random.alphaNumeric(8),
+      ...newFields,
       products: this.generateProducts(5),
-      initialMessage: faker.random.words(20),
-      finalMessage: faker.random.words(20),
     };
   },
 };
