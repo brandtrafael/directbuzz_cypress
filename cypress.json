@@ -1,5 +1,5 @@
 {
   "baseUrl": "https://app-qa.directflow.com.br/",
   "requestTimeout": 2000000,
-  "apiUrl": "https://api-qa.directbuzz.com.br/"
+  "apiUrl": "https://api-qa.directbuzz.com.br"
 }
