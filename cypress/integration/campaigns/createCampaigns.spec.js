@@ -1,6 +1,6 @@
 import campaigns from "../../pages/campaigns";
 import campaignSellProducts from "../../factories/campaignSellProducts";
-import campaignGenerateContactList from "../../factories/campaignGenerateContactList";
+import campaignGenerateContactList from "../../factories/gui/campaignGenerateContactList";
 
 describe("Create Project", () => {
   beforeEach(() => cy.login());
