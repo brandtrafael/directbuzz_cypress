@@ -4,6 +4,9 @@
     "lib": ["es5", "dom"],
     "types": ["cypress"]
   },
-  "include": ["**/*.ts", "cypress/support/general_commands.js", "cypress/integration/campaigns/createCampaigns.spec.js"]
+  "include": [
+    "**/*.js",
+    "cypress/support/general_commands.js",
+    "cypress/integration/campaigns/createCampaigns.spec.js"
+  ]
 }
-

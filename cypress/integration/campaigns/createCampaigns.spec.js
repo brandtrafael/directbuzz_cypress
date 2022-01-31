@@ -43,7 +43,7 @@ describe("Create Project", () => {
     campaigns.deleteCampaignByName(newCampaignData.name);
   });
 
-  it("DIRECTBUZZ-32", () => {
+  it("DIRECTBUZZ-66", () => {
     const campaignData = campaignGenerateContactList.data();
     campaigns.createCampaign("generate contact list", campaignData);
     campaigns.altereStatusOfCampaign(campaignData.name);
