@@ -1,6 +1,5 @@
 export default {
   data: (body, type) => {
-    
     const handlerTriggers = (products) => {
       products.map((product, index) => ({
         answer: String(index),
@@ -53,7 +52,7 @@ export default {
     return {
       name: body.campaignName,
       keyword: body.campaignKeyword,
-      goalId: 2,
+      goalId: type === "sell products" ? 2 : 1,
       instagramAccountId: 5633,
       initialData: {
         flows: [
