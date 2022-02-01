@@ -13,7 +13,7 @@ class Campaigns {
       .click();
     cy.contains("Excluir").click();
     cy.get("[data-test='btn-confirm-delete-campaign-dialog']").click();
-    cy.contains("A campanha foi excluída com sucesso.");
+    cy.contains("A campanha foi excluída com sucesso.", { timeout: 10000 });
   }
 
   addOrEditProducts(products, action) {
@@ -115,7 +115,7 @@ class Campaigns {
   }
 
   editCampaigns(type, oldData, newData) {
-    cy.contains(oldData.name)
+    cy.contains(oldData.campaignName)
       .parent()
       .parent()
       .parent()
@@ -125,8 +125,8 @@ class Campaigns {
     cy.contains("Editar").click();
     this.fillFieldsCampaign(type, newData, "edit");
     cy.get("[data-test='btn-publish-campaign-onboarding']").click();
-    cy.contains("Campanha alterada com sucesso!");
-    cy.contains(oldData.name)
+    cy.contains("Campanha alterada com sucesso!", { timeout: 10000 });
+    cy.contains(oldData.campaignName)
       .parent()
       .parent()
       .parent()
