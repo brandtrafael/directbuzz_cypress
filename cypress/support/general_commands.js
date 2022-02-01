@@ -9,3 +9,4 @@ Cypress.Commands.add("login", () => {
   cy.get("[data-test='btn-login']").click();
   cy.url().should("be.equal", `${Cypress.config(`baseUrl`)}campaigns`);
 });
+

@@ -36,12 +36,13 @@ class Campaigns {
   }
 
   fillFieldsCampaign(type, data, action) {
+    cy.log(data);
     cy.get("[data-test='input-campaign-name-onboarding'] > div > input")
       .clear()
-      .type(data.name);
+      .type(data.campaignName);
     cy.get("[data-test='input-initial-keyword-campaign-onboard'] > div > input")
       .clear()
-      .type(data.keyword);
+      .type(data.campaignKeyword);
 
     this.nextStep();
 
@@ -75,12 +76,12 @@ class Campaigns {
   verifyFieldsEdited(type, data) {
     cy.get("[data-test='input-campaign-name-onboarding'] > div > input").should(
       "have.value",
-      data.name
+      data.campaignName
     );
 
     cy.get(
       "[data-test='input-initial-keyword-campaign-onboard'] > div > input"
-    ).should("have.value", data.keyword);
+    ).should("have.value", data.campaignKeyword);
 
     this.nextStep();
 
@@ -156,10 +157,12 @@ class Campaigns {
       `${Cypress.config(`baseUrl`)}campaigns/new/ready-to-publish`
     );
     cy.get("[data-test='btn-publish-campaign-onboarding']").click();
-    cy.contains("Campanha ativada com sucesso!");
+    cy.contains("Campanha ativada com sucesso!", {
+      timeout: 10000,
+    });
     cy.url().should("be.equal", `${Cypress.config(`baseUrl`)}campaigns`);
-    cy.contains(data.name);
-    cy.contains(data.keyword);
+    cy.contains(data.campaignName);
+    cy.contains(data.campaignKeyword);
   }
 
   altereStatusOfCampaign(name) {
