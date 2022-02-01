@@ -1,5 +1,6 @@
 export default {
   data: (body, type) => {
+    
     const handlerTriggers = (products) => {
       products.map((product, index) => ({
         answer: String(index),

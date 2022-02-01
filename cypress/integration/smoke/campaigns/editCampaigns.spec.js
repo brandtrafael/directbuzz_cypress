@@ -1,6 +1,6 @@
-import campaigns from "../../pages/campaigns";
-import campaignSellProducts from "../../factories/gui/campaignSellProducts";
-import campaignGenerateContactList from "../../factories/gui/campaignGenerateContactList";
+import campaigns from "../../../pages/campaigns";
+import campaignSellProducts from "../../../factories/gui/campaignSellProducts";
+import campaignGenerateContactList from "../../../factories/gui/campaignGenerateContactList";
 
 describe("Edit Project", () => {
   const defaultData = [
