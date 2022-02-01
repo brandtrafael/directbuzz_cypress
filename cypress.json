@@ -1,5 +1,6 @@
 {
   "baseUrl": "https://app-qa.directflow.com.br/",
   "requestTimeout": 2000000,
+  "chromeWebSecurity": false,
   "apiUrl": "https://api-qa.directbuzz.com.br"
 }

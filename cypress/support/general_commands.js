@@ -8,5 +8,6 @@ Cypress.Commands.add("login", () => {
   );
   cy.get("[data-test='btn-login']").click();
   cy.url().should("be.equal", `${Cypress.config(`baseUrl`)}campaigns`);
+  cy.get('#notistack-snackbar').should("have.text", "Login realizado com sucesso!")
 });
 
