@@ -60,7 +60,7 @@ describe("Scenario - Functional - Create Project", () => {
     cy.url().should("include", "/campaigns/new/campaign-configs");
   });
 
-  it.only("DIRECTBUZZ-29", () => {
+  it("DIRECTBUZZ-29", () => {
     const campaignData = campaignSellProducts.data(defaultData, false, 1);
     cy.contains("Nova campanha").click();
     cy.get(variables.btn.createCampainSellProducts).click();
@@ -74,5 +74,18 @@ describe("Scenario - Functional - Create Project", () => {
     campaigns.addOrEditProducts(campaignData.products, "new");
     campaigns.nextStep();
     cy.contains("Informe uma url válida.");
+  });
+  it("DIRECTBUZZ-30", () => {
+    const campaignData = campaignSellProducts.data(defaultData, true, 5);
+    cy.contains("Nova campanha").click();
+    campaigns.createCampaign("sell products", campaignData);
+    campaigns.deleteCampaignByName(campaignData.campaignName);
+  });
+
+  it("DIRECTBUZZ-31", () => {
+    const campaignData = campaignSellProducts.data(defaultData, true, 1);
+    cy.contains("Nova campanha").click();
+    campaigns.createCampaign("sell products", campaignData);
+    campaigns.deleteCampaignByName(campaignData.campaignName);
   });
 });

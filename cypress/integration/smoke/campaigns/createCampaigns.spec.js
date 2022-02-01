@@ -30,7 +30,7 @@ describe("Scenario - Smoke - Create Project", () => {
         },
       ],
       true,
-      5
+      2
     );
     campaigns.createCampaign("sell products", campaignData);
     campaigns.deleteCampaignByName(campaignData.campaignName);
