@@ -7,6 +7,6 @@
   "include": [
     "**/*.js",
     "cypress/support/general_commands.js",
-    "cypress/integration/smoke/campaigns/createCampaigns.spec.js"
+    "cypress/integration/campaigns/createCampaigns.spec.js"
   ]
 }

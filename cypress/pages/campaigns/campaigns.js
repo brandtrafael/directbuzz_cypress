@@ -1,6 +1,8 @@
+import variables from "./variables";
+
 class Campaigns {
   nextStep() {
-    cy.get("[data-test='btn-next-step-create-campaign-onboarding']").click();
+    cy.get(variables.btn.nextStep).click();
   }
 
   deleteCampaignByName(name) {
@@ -12,24 +14,20 @@ class Campaigns {
       .find("#settings-btn")
       .click();
     cy.contains("Excluir").click();
-    cy.get("[data-test='btn-confirm-delete-campaign-dialog']").click();
+    cy.get(variables.btn.confirmDelete).click();
     cy.contains("A campanha foi excluída com sucesso.", { timeout: 10000 });
   }
 
   addOrEditProducts(products, action) {
     for (var indexProduct in products) {
       if (action === "new") {
-        cy.get("[data-test='btn-add-product-onboarding']").click();
+        cy.get(variables.btn.addProduct).click();
       }
-      cy.get(
-        `[data-test='input-product-name-${indexProduct}-onboarding'] > div > input`
-      )
+      cy.get(variables.input.productName(indexProduct))
         .clear()
         .type(products[indexProduct].productName);
 
-      cy.get(
-        `[data-test='input-url-product-${indexProduct}-onboarding'] > div > input`
-      )
+      cy.get(variables.input.productUrl(indexProduct))
         .clear()
         .type(products[indexProduct].productUrl);
     }
@@ -37,19 +35,13 @@ class Campaigns {
 
   fillFieldsCampaign(type, data, action) {
     cy.log(data);
-    cy.get("[data-test='input-campaign-name-onboarding'] > div > input")
-      .clear()
-      .type(data.campaignName);
-    cy.get("[data-test='input-initial-keyword-campaign-onboard'] > div > input")
-      .clear()
-      .type(data.campaignKeyword);
+    cy.get(variables.input.campaignName).clear().type(data.campaignName);
+    cy.get(variables.input.campaignKeyword).clear().type(data.campaignKeyword);
 
     this.nextStep();
 
     if (type === "generate contact list") {
-      cy.get(
-        "[data-test='input-solicitation-message-onboarding'] > div > div > div > div > textarea"
-      )
+      cy.get(variables.input.emailRequest)
         .clear()
         .type(data.emailRequestMessage);
       this.nextStep();
@@ -60,58 +52,56 @@ class Campaigns {
       this.nextStep();
     }
 
-    cy.get(
-      "[data-test='input-initial-message-onboarding'] > div > div > div > div > textarea"
-    )
-      .clear()
-      .type(data.initialMessage);
-    cy.get(
-      "[data-test='input-final-message-onboarding'] > div > div > div > div > textarea"
-    )
-      .clear()
-      .type(data.finalMessage);
+    cy.get(variables.input.initalMessage).clear().type(data.initialMessage);
+    cy.get(variables.input.finalMessage).clear().type(data.finalMessage);
     this.nextStep();
   }
 
   verifyFieldsEdited(type, data) {
-    cy.get("[data-test='input-campaign-name-onboarding'] > div > input").should(
+    cy.get(variables.input.campaignName).should(
       "have.value",
       data.campaignName
     );
 
-    cy.get(
-      "[data-test='input-initial-keyword-campaign-onboard'] > div > input"
-    ).should("have.value", data.campaignKeyword);
+    cy.get(variables.input.campaignKeyword).should(
+      "have.value",
+      data.campaignKeyword
+    );
 
     this.nextStep();
 
     if (type === "generate contact list") {
-      cy.get(
-        "[data-test='input-solicitation-message-onboarding'] > div > div > div > div > textarea"
-      ).should("have.value", data.emailRequestMessage);
+      cy.get(variables.input.emailRequest).should(
+        "have.value",
+        data.emailRequestMessage
+      );
       this.nextStep();
     }
 
     if (type === "sell products") {
       for (var indexProduct in data.products) {
-        cy.get(
-          `[data-test='input-product-name-${indexProduct}-onboarding'] > div > input`
-        ).should("have.value", data.products[indexProduct].productName);
+        cy.get(variables.input.productName(indexProduct)).should(
+          "have.value",
+          data.products[indexProduct].productName
+        );
 
-        cy.get(
-          `[data-test='input-url-product-${indexProduct}-onboarding'] > div > input`
-        ).should("have.value", data.products[indexProduct].productUrl);
+        cy.get(variables.input.productUrl(indexProduct)).should(
+          "have.value",
+          data.products[indexProduct].productUrl
+        );
       }
 
       this.nextStep();
     }
 
-    cy.get(
-      "[data-test='input-initial-message-onboarding'] > div > div > div > div > textarea"
-    ).should("have.value", data.initialMessage);
-    cy.get(
-      "[data-test='input-final-message-onboarding'] > div > div > div > div > textarea"
-    ).should("have.value", data.finalMessage);
+    cy.get(variables.input.initalMessage).should(
+      "have.value",
+      data.initialMessage
+    );
+    cy.get(variables.input.finalMessage).should(
+      "have.value",
+      data.finalMessage
+    );
   }
 
   editCampaigns(type, oldData, newData) {
@@ -124,7 +114,7 @@ class Campaigns {
       .click();
     cy.contains("Editar").click();
     this.fillFieldsCampaign(type, newData, "edit");
-    cy.get("[data-test='btn-publish-campaign-onboarding']").click();
+    cy.get(variables.btn.publishCampaign).click();
     cy.contains("Campanha alterada com sucesso!", { timeout: 10000 });
     cy.contains(oldData.campaignName)
       .parent()
@@ -141,14 +131,10 @@ class Campaigns {
   createCampaign(type, data) {
     cy.contains("Nova campanha").click();
     if (type === "sell products") {
-      cy.get(
-        "[data-test='container-create-campaign-sell-product-onboarding']"
-      ).click();
+      cy.get(variables.btn.createCampainSellProducts).click();
     }
     if (type === "generate contact list") {
-      cy.get(
-        "[data-test='container-create-campaign-generate-list-onboarding']"
-      ).click();
+      cy.get(variables.btn.createCampainGenerateContactList).click();
     }
 
     this.fillFieldsCampaign(type, data, "new");
@@ -156,7 +142,7 @@ class Campaigns {
       "be.equal",
       `${Cypress.config(`baseUrl`)}campaigns/new/ready-to-publish`
     );
-    cy.get("[data-test='btn-publish-campaign-onboarding']").click();
+    cy.get(variables.btn.publishCampaign).click();
     cy.contains("Campanha ativada com sucesso!", {
       timeout: 10000,
     });
