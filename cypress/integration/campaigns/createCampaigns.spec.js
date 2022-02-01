@@ -1,5 +1,5 @@
 import campaigns from "../../pages/campaigns";
-import campaignSellProducts from "../../factories/campaignSellProducts";
+import campaignSellProducts from "../../factories/gui/campaignSellProducts";
 import campaignGenerateContactList from "../../factories/gui/campaignGenerateContactList";
 
 describe("Create Project", () => {
@@ -33,11 +33,11 @@ describe("Create Project", () => {
   });
 
   it("DIRECTBUZZ-2", () => {
-    const campaignData = campaignSellProducts.data([
+    const campaignData = campaignGenerateContactList.data([
       {
         name: "campaignName",
         typeData: "alphaNumeric",
-        numberData: 80,
+        numberData: 8,
       },
       {
         name: "campaignKeyword",
