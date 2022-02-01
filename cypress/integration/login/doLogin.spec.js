@@ -11,6 +11,7 @@ describe('Do login',()=>{
           Cypress.env("unregisteredUser").password
         );
         cy.get("[data-test='btn-login']").click();
-        cy.contains('Usuário ou senha inválido!');
+        cy.url().should("not.be.equal", `${Cypress.config(`baseUrl`)}campaigns`);
+        cy.get('#notistack-snackbar').should("have.text", "Usuário ou senha inválido!")
     })
 })
