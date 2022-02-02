@@ -13,7 +13,8 @@ jobs:
       - uses: actions/checkout@v2
       - uses: cypress-io/github-action@v2
         with:
-          browser: chrome
+          record: false
+          #browser: chrome
           #headless: true
           #install: yarn install
           spec: cypress/integration/smoke/**/*.spec.js
