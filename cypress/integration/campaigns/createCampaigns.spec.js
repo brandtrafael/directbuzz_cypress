@@ -81,11 +81,4 @@ describe("Scenario - Functional - Create Project", () => {
     campaigns.createCampaign("sell products", campaignData);
     campaigns.deleteCampaignByName(campaignData.campaignName);
   });
-
-  it("DIRECTBUZZ-31", () => {
-    const campaignData = campaignSellProducts.data(defaultData, true, 1);
-    cy.contains("Nova campanha").click();
-    campaigns.createCampaign("sell products", campaignData);
-    campaigns.deleteCampaignByName(campaignData.campaignName);
-  });
 });

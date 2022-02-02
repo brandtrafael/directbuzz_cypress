@@ -2,7 +2,7 @@ import variables from "../../pages/campaigns/variables";
 import campaigns from "../../pages/campaigns/campaigns";
 import campaignSellProducts from "../../factories/gui/campaignSellProducts";
 
-describe("Scenario - Functional - Create Project", () => {
+describe("Scenario - Functional - Delete Project", () => {
   beforeEach(() => cy.login());
 
   const defaultData = [
@@ -28,7 +28,7 @@ describe("Scenario - Functional - Create Project", () => {
     },
   ];
 
-  it("DIRECTBUZZ-61", () => {
+  it("DIRECTBUZZ-31", () => {
     const campaignData = campaignSellProducts.data(defaultData, true, 5);
     cy.api_createCampaign(campaignData, "sell products");
     cy.wait(60000);
