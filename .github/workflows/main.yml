@@ -1,8 +1,6 @@
 name: Cypress Tests
 
 on:
-  push:
-    branches: [ main ]
   pull_request:
     branches: [ main ]
   workflow_dispatch:
@@ -15,4 +13,4 @@ jobs:
       - uses: cypress-io/github-action@v2
         with:
           install: yarn install
-          run-tests: npx cypress run --spec "cypress/integration/smoke/**/*.spec.js" 2>/dev/null
+          run-tests: npx cypress run --spec "cypress/integration/smoke/**/*.spec.js"
