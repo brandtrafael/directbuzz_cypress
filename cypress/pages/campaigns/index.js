@@ -169,21 +169,20 @@ class Campaigns {
         .should(i % 2 ? "be.checked" : "not.be.checked");
     }
   }
-  
-  selectCampaignType(type){
-    cy.contains('Nova campanha')
-        .click();
-    if(type === "generate contact list"){
-      cy.get(variables.btn.createCampainGenerateContactList)
-        .click();
-    } else if (type === "sell products"){
-      cy.get(variables.btn.createCampainSellProducts)
-        .click();
+
+  selectCampaignType(type) {
+    cy.contains("Nova campanha", {
+      timeout: 20000,
+    }).click();
+    if (type === "generate contact list") {
+      cy.get(variables.btn.createCampainGenerateContactList).click();
+    } else if (type === "sell products") {
+      cy.get(variables.btn.createCampainSellProducts).click();
     }
   }
 
-  returnAndDeleteCampaign(campaignName){
-    cy.visit(Cypress.config('baseUrl'));
+  returnAndDeleteCampaign(campaignName) {
+    cy.visit(Cypress.config("baseUrl"));
     this.deleteCampaignByName(campaignName);
   }
 }
