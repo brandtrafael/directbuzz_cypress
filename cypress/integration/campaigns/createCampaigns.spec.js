@@ -1,5 +1,5 @@
 import variables from "../../pages/campaigns/variables";
-import campaigns from "../../pages/campaigns/campaigns";
+import campaigns from "../../pages/campaigns";
 import campaignSellProducts from "../../factories/gui/campaignSellProducts";
 import campaignGenerateContactList from "../../factories/gui/campaignGenerateContactList";
 import faker from "faker";

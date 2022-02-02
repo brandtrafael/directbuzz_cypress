@@ -1,4 +1,4 @@
-import campaigns from "../../../pages/campaigns/campaigns";
+import campaigns from "../../../pages/campaigns";
 import campaignSellProducts from "../../../factories/gui/campaignSellProducts";
 import campaignGenerateContactList from "../../../factories/gui/campaignGenerateContactList";
 
