@@ -1,5 +1,3 @@
-const { it } = require("mocha");
-
 describe("Accounts", () => {
   beforeEach(() => cy.login());
   it("DIRECTBUZZ-57", () => {
