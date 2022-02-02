@@ -172,4 +172,14 @@ describe("Scenario - Functional - Create Project", () => {
       `${Cypress.config(`baseUrl`)}campaigns/new/campaign-base-messages`
     );
   });
+
+  it("DIRECTBUZZ-68", () => {
+    campaigns.selectCampaignType('generate contact list');
+    cy.get(variables.btn.nextStep)
+      .click()
+    cy.contains("Informe a palavra-chave para sua campanha.");
+    cy.contains("Informe um nome para sua campanha.");
+    cy.url().should("include", "/campaigns/new/campaign-configs");
+  });
+
 });

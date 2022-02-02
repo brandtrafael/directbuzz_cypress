@@ -171,14 +171,12 @@ class Campaigns {
   }
   
   selectCampaignType(type){
-    if(type === "generate contact list"){
-      cy.get(variables.btn.newCampaign)
+    cy.contains('Nova campanha')
         .click();
+    if(type === "generate contact list"){
       cy.get(variables.btn.createCampainGenerateContactList)
         .click();
     } else if (type === "sell products"){
-      cy.get(variables.btn.newCampaign)
-        .click();
       cy.get(variables.btn.createCampainSellProducts)
         .click();
     }
