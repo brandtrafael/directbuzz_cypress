@@ -171,7 +171,7 @@ describe("Scenario - Functional - Create Project", () => {
     cy.url().should("include", "/campaigns/new/campaign-goal-messages");
   });
 
-  it.only("DIRECTBUZZ-68", () => {
+  it("DIRECTBUZZ-68", () => {
     campaigns.selectCampaignType('generate contact list');
     cy.get(variables.btn.nextStep)
       .click()
