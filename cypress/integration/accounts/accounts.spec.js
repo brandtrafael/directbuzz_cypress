@@ -8,5 +8,4 @@ describe("Accounts", () => {
     cy.get('[id="email"]').type(Cypress.env("facebookUser").username);
     cy.get('[id="pass"]').type(Cypress.env("facebookUser").password);
   });
-  it("DIRECTBUZZ-");
 });
