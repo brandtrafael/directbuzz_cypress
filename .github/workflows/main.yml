@@ -8,13 +8,13 @@ on:
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
-    container: cypress/browsers:node16.5.0-chrome97-ff96
+    #container: cypress/browsers:node16.5.0-chrome97-ff96
     steps:
       - uses: actions/checkout@v2
       - uses: cypress-io/github-action@v2
         with:
           record: false
-          #browser: chrome
-          #headless: true
+          browser: chrome
+          headless: true
           #install: yarn install
           spec: cypress/integration/smoke/**/*.spec.js
