@@ -33,7 +33,7 @@ describe("Scenario - Functional - Create Project", () => {
   //Venda de produtos
 
   it("DIRECTBUZZ-26", () => {
-    campaigns.selectCampaignType('sell products');
+    campaigns.selectCampaignType("sell products");
     campaigns.nextStep();
     cy.contains("Informe a palavra-chave para sua campanha.");
     cy.contains("Informe um nome para sua campanha.");
@@ -42,7 +42,7 @@ describe("Scenario - Functional - Create Project", () => {
 
   it("DIRECTBUZZ-27", () => {
     const campaignData = campaignSellProducts.data(defaultData, true, 5);
-    campaigns.selectCampaignType('sell products');
+    campaigns.selectCampaignType("sell products");
     cy.get(variables.input.campaignName)
       .clear()
       .type(campaignData.campaignName);
@@ -53,7 +53,7 @@ describe("Scenario - Functional - Create Project", () => {
 
   it("DIRECTBUZZ-28", () => {
     const campaignData = campaignSellProducts.data(defaultData, true, 5);
-    campaigns.selectCampaignType('sell products');
+    campaigns.selectCampaignType("sell products");
     cy.get(variables.input.campaignKeyword)
       .clear()
       .type(campaignData.campaignKeyword);
@@ -64,7 +64,7 @@ describe("Scenario - Functional - Create Project", () => {
 
   it("DIRECTBUZZ-29", () => {
     const campaignData = campaignSellProducts.data(defaultData, false, 1);
-    campaigns.selectCampaignType('sell products');
+    campaigns.selectCampaignType("sell products");
     cy.get(variables.input.campaignName)
       .clear()
       .type(campaignData.campaignName);
@@ -80,7 +80,9 @@ describe("Scenario - Functional - Create Project", () => {
 
   it("DIRECTBUZZ-30", () => {
     const campaignData = campaignSellProducts.data(defaultData, true, 5);
-    cy.contains("Nova campanha").click();
+    cy.contains("Nova campanha", {
+      timeout: 20000,
+    }).click();
     campaigns.createCampaign("sell products", campaignData);
     campaigns.deleteCampaignByName(campaignData.campaignName);
   });
@@ -97,12 +99,11 @@ describe("Scenario - Functional - Create Project", () => {
     cy.get(variables.input.campaignKeyword)
       .clear()
       .type(faker.random.alphaNumeric(8));
-    cy.get(variables.btn.nextStep)
-      .click();
+    cy.get(variables.btn.nextStep).click();
     cy.contains("Já existe uma campanha com esse nome");
     cy.url().should("include", "/campaigns/new/campaign-configs");
     campaigns.returnAndDeleteCampaign(campaignData.campaignName);
-  })
+  });
 
   it("DIRECTBUZZ-70", () => {
     const campaignData = campaignSellProducts.data(defaultData);
@@ -116,12 +117,11 @@ describe("Scenario - Functional - Create Project", () => {
     cy.get(variables.input.campaignKeyword)
       .clear()
       .type(campaignData.campaignKeyword);
-    cy.get(variables.btn.nextStep)
-      .click();
+    cy.get(variables.btn.nextStep).click();
     cy.contains("Já existe uma campanha com essa palavra-chave");
     cy.url().should("include", "/campaigns/new/campaign-configs");
     campaigns.returnAndDeleteCampaign(campaignData.campaignName);
-  })
+  });
 
   //Gerar lista de contatos
 
@@ -142,8 +142,7 @@ describe("Scenario - Functional - Create Project", () => {
     cy.get(variables.input.campaignKeyword)
       .clear()
       .type(faker.random.alphaNumeric(8));
-    cy.get(variables.btn.nextStep)
-      .click();
+    cy.get(variables.btn.nextStep).click();
     cy.contains("Já existe uma campanha com esse nome");
     cy.url().should("include", "/campaigns/new/campaign-configs");
     campaigns.returnAndDeleteCampaign(campaignData.campaignName);
@@ -166,8 +165,7 @@ describe("Scenario - Functional - Create Project", () => {
     cy.get(variables.input.campaignKeyword)
       .clear()
       .type(campaignData.campaignKeyword);
-    cy.get(variables.btn.nextStep)
-      .click();
+    cy.get(variables.btn.nextStep).click();
     cy.contains("Já existe uma campanha com essa palavra-chave");
     cy.url().should("include", "/campaigns/new/campaign-configs");
     campaigns.returnAndDeleteCampaign(campaignData.campaignName);
@@ -178,8 +176,7 @@ describe("Scenario - Functional - Create Project", () => {
     cy.get(variables.input.campaignKeyword)
       .clear()
       .type(faker.random.alphaNumeric(8));
-    cy.get(variables.btn.nextStep)
-      .click();
+    cy.get(variables.btn.nextStep).click();
     cy.contains("Informe um nome para sua campanha.");
     cy.url().should("include", "/campaigns/new/campaign-configs");
   });
@@ -189,8 +186,7 @@ describe("Scenario - Functional - Create Project", () => {
     cy.get(variables.input.campaignName)
       .clear()
       .type(faker.random.alphaNumeric(8));
-    cy.get(variables.btn.nextStep)
-      .click();
+    cy.get(variables.btn.nextStep).click();
     cy.contains("Informe a palavra-chave para sua campanha.");
     cy.url().should("include", "/campaigns/new/campaign-configs");
   });
@@ -203,23 +199,18 @@ describe("Scenario - Functional - Create Project", () => {
     cy.get(variables.input.campaignKeyword)
       .clear()
       .type(faker.random.alphaNumeric(8));
-    cy.get(variables.btn.nextStep)
-      .click();
-    cy.get(variables.input.emailRequest)
-      .clear();
-    cy.get(variables.btn.nextStep)
-      .click();
+    cy.get(variables.btn.nextStep).click();
+    cy.get(variables.input.emailRequest).clear();
+    cy.get(variables.btn.nextStep).click();
     cy.contains("Informe uma mensagem.");
     cy.url().should("include", "/campaigns/new/campaign-goal-messages");
   });
 
   it("DIRECTBUZZ-68", () => {
-    campaigns.selectCampaignType('generate contact list');
-    cy.get(variables.btn.nextStep)
-      .click()
+    campaigns.selectCampaignType("generate contact list");
+    cy.get(variables.btn.nextStep).click();
     cy.contains("Informe a palavra-chave para sua campanha.");
     cy.contains("Informe um nome para sua campanha.");
     cy.url().should("include", "/campaigns/new/campaign-configs");
   });
-
 });
