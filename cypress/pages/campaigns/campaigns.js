@@ -34,7 +34,6 @@ class Campaigns {
   }
 
   fillFieldsCampaign(type, data, action) {
-    cy.log(data);
     cy.get(variables.input.campaignName).clear().type(data.campaignName);
     cy.get(variables.input.campaignKeyword).clear().type(data.campaignKeyword);
 

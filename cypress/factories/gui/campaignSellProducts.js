@@ -1,17 +1,19 @@
 const faker = require("faker");
 
 export default {
-  generateProducts: function (number) {
+  generateProducts: function (number, urlValid) {
     const arrayProducts = [];
     for (var product in Array.from(Array(number).keys())) {
       arrayProducts.push({
         productName: faker.commerce.product() + `${String(product)}`,
-        productUrl: `http://${faker.commerce.product()}.com.br`,
+        productUrl: urlValid
+          ? `http://${faker.commerce.product()}.com.br`
+          : faker.commerce.product(),
       });
     }
     return arrayProducts;
   },
-  data: function (fields) {
+  data: function (fields, urlValid, numberOfProducts) {
     const newFields = fields.reduce((acc, currentField) => {
       acc[currentField.name] = faker.random[currentField.typeData](
         currentField.numberData
@@ -21,7 +23,7 @@ export default {
 
     return {
       ...newFields,
-      products: this.generateProducts(5),
+      products: this.generateProducts(numberOfProducts, urlValid),
     };
   },
 };

@@ -31,8 +31,8 @@ describe("Scenario - Smoke - Edit Project", () => {
   });
 
   it("DIRECTBUZZ-41", function () {
-    const oldCampaignData = campaignSellProducts.data(defaultData);
-    const newCampaignData = campaignSellProducts.data(defaultData);
+    const oldCampaignData = campaignSellProducts.data(defaultData, true, 5);
+    const newCampaignData = campaignSellProducts.data(defaultData, true, 5);
     cy.api_createCampaign(oldCampaignData, "sell products");
     cy.wait(60000);
     cy.reload();
@@ -41,7 +41,7 @@ describe("Scenario - Smoke - Edit Project", () => {
   });
 
   it("DIRECTBUZZ-32", () => {
-    const campaignData = campaignSellProducts.data(defaultData);
+    const campaignData = campaignSellProducts.data(defaultData, true, 5);
     cy.api_createCampaign(campaignData, "sell products");
     cy.wait(60000);
     cy.reload();
@@ -69,6 +69,11 @@ describe("Scenario - Smoke - Edit Project", () => {
   });
 
   it("DIRECTBUZZ-66", () => {
+    defaultData.push({
+      name: "emailRequestMessage",
+      typeData: "words",
+      numberData: 20,
+    });
     const campaignData = campaignGenerateContactList.data(defaultData);
     cy.api_createCampaign(campaignData, "generate contact list");
     cy.wait(60000);
