@@ -1,5 +1,6 @@
 export default {
   btn: {
+    newCampaign: "[data-test='btn-create-new-campaign']",
     confirmDelete: "[data-test='btn-confirm-delete-campaign-dialog']",
     nextStep: "[data-test='btn-next-step-create-campaign-onboarding']",
     addProduct: "[data-test='btn-add-product-onboarding']",

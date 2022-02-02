@@ -169,6 +169,25 @@ class Campaigns {
         .should(i % 2 ? "be.checked" : "not.be.checked");
     }
   }
+  
+  selectCampaignType(type){
+    if(type === "generate contact list"){
+      cy.get(variables.btn.newCampaign)
+        .click();
+      cy.get(variables.btn.createCampainGenerateContactList)
+        .click();
+    } else if (type === "sell products"){
+      cy.get(variables.btn.newCampaign)
+        .click();
+      cy.get(variables.btn.createCampainSellProducts)
+        .click();
+    }
+  }
+
+  returnAndDeleteCampaign(campaignName){
+    cy.visit(Cypress.config('baseUrl'));
+    this.deleteCampaignByName(campaignName);
+  }
 }
 
 export default new Campaigns();
