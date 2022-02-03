@@ -1,6 +1,6 @@
-import campaigns from "../../pages/campaigns";
-import campaignSellProducts from "../../factories/gui/campaignSellProducts";
-import campaignGenerateContactList from "../../factories/gui/campaignGenerateContactList";
+import campaigns from "../../../pages/campaigns";
+import campaignSellProducts from "../../../factories/gui/campaignSellProducts";
+import campaignGenerateContactList from "../../../factories/gui/campaignGenerateContactList";
 
 describe("Scenario - Functional - See Project Contacts", () => {
     beforeEach(() => cy.login());
@@ -35,6 +35,7 @@ describe("Scenario - Functional - See Project Contacts", () => {
         cy.wait(60000);
         cy.reload();
         campaigns.seeCampaignContacts(campaignData.campaignName);
+        campaigns.returnAndDeleteCampaign(campaignData.campaignName);
     })
 
     it("DIRECTBUZZ-65", () => {
@@ -49,5 +50,6 @@ describe("Scenario - Functional - See Project Contacts", () => {
         cy.wait(60000);
         cy.reload();
         campaigns.seeCampaignContacts(campaignData.campaignName);
+        campaigns.returnAndDeleteCampaign(campaignData.campaignName);
     })
 })
