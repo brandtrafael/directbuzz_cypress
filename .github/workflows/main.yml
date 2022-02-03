@@ -1,18 +1,29 @@
 name: Cypress Tests
 
 on:
-  push:
-    branches: [ main ]
   pull_request:
     branches: [ main ]
   workflow_dispatch:
 
 jobs:
   cypress-run:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
+    container: cypress/browsers:node16.13.0-chrome95-ff94
     steps:
       - uses: actions/checkout@v2
       - uses: cypress-io/github-action@v2
         with:
-          install: yarn install
-          run-tests: npx cypress run --spec "cypress/integration/smoke/**/*.spec.js" 2>/dev/null
+          record: false
+          browser: chrome
+          headless: true
+          spec: cypress/integration/smoke/**/*.spec.js
+      - uses: actions/upload-artifact@v2
+        if: failure()
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots
+      - uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: cypress-videos
+          path: cypress/videos
