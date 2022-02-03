@@ -48,4 +48,63 @@ describe("Scenario - Functional - Edit Contact", () => {
     ]);
     cy.contains("Contato atualizado com sucesso");
   });
+
+  it("DIRECTBUZZ-35", () => {
+    contacts.editContact([
+      {
+        id: contactVariables.input.contactBirthday,
+        value: "2501200"
+      }
+    ]);
+    cy.contains("Informe uma data de nascimento válida");
+  })
+
+  it("DIRECTBUZZ-36", () => {
+    contacts.editContact([
+      {
+        id: contactVariables.input.contactBirthday
+      }
+    ]);
+    cy.contains("Contato atualizado com sucesso");
+  });
+
+  it("DIRECTBUZZ-37", () => {
+    contacts.editContact([
+      {
+        id: contactVariables.input.contactBirthday,
+        value: "00012001"
+      }   
+    ]);
+    cy.contains("Informe uma data de nascimento válida");
+  });
+
+  it("DIRECTBUZZ-38", () => {
+    contacts.editContact([
+      {
+        id: contactVariables.input.contactBirthday,
+        value: "32012001"
+      }   
+    ]);
+    cy.contains("Informe uma data de nascimento válida");
+  });
+
+  it("DIRECTBUZZ-39", () => {
+    contacts.editContact([
+      {
+        id: contactVariables.input.contactBirthday,
+        value: "25132001"
+      }   
+    ]);
+    cy.contains("Informe uma data de nascimento válida");
+  });
+
+  it("DIRECTBUZZ-40", () => {
+    contacts.editContact([
+      {
+        id: contactVariables.input.contactBirthday,
+        value: "25002001"
+      }   
+    ]);
+    cy.contains("Informe uma data de nascimento válida");
+  });
 });
