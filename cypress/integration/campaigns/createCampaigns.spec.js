@@ -30,7 +30,7 @@ describe("Scenario - Functional - Create Project", () => {
     },
   ];
 
-  //Venda de produtos
+  //Sell products
 
   it("DIRECTBUZZ-26", () => {
     campaigns.selectCampaignType('sell products');
@@ -121,7 +121,7 @@ describe("Scenario - Functional - Create Project", () => {
     campaigns.returnAndDeleteCampaign(campaignData.campaignName);
   })
 
-  //Gerar lista de contatos
+  //Generate contact list
 
   it("DIRECTBUZZ-3", () => {
     defaultData.push({
