@@ -2,7 +2,7 @@ import campaigns from "../../../pages/campaigns";
 import campaignSellProducts from "../../../factories/gui/campaignSellProducts";
 import campaignGenerateContactList from "../../../factories/gui/campaignGenerateContactList";
 
-describe("Scenario - Functional - See Project Contacts", () => {
+describe("Scenario - Smoke - See Project Contacts", () => {
   const defaultData = [
     {
       name: "campaignName",
