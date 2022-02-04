@@ -7,8 +7,10 @@ on:
 
 jobs:
   cypress-run:
-    runs-on: ubuntu-20.04
-    container: cypress/browsers:node16.13.0-chrome95-ff94
+    runs-on: ubuntu-latest
+    container:
+      image: cypress/browsers:node16.5.0-chrome97-ff96
+      options: --user 1001
     steps:
       - uses: actions/checkout@v2
       - uses: cypress-io/github-action@v2
