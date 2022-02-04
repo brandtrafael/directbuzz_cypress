@@ -26,16 +26,11 @@ describe("Scenario - Smoke - Edit Project", () => {
     },
   ];
 
-  beforeEach(function () {
-    cy.login();
-  });
-
   it("DIRECTBUZZ-41", function () {
     const oldCampaignData = campaignSellProducts.data(defaultData, true, 5);
     const newCampaignData = campaignSellProducts.data(defaultData, true, 5);
     cy.api_createCampaign(oldCampaignData, "sell products");
-    cy.wait(60000);
-    cy.reload();
+    cy.login();
     campaigns.editCampaigns("sell products", oldCampaignData, newCampaignData);
     campaigns.deleteCampaignByName(newCampaignData.campaignName);
   });
@@ -43,8 +38,7 @@ describe("Scenario - Smoke - Edit Project", () => {
   it("DIRECTBUZZ-32", () => {
     const campaignData = campaignSellProducts.data(defaultData, true, 5);
     cy.api_createCampaign(campaignData, "sell products");
-    cy.wait(60000);
-    cy.reload();
+    cy.login();
     campaigns.altereStatusOfCampaign(campaignData.campaignName);
     campaigns.deleteCampaignByName(campaignData.campaignName);
   });
@@ -58,8 +52,7 @@ describe("Scenario - Smoke - Edit Project", () => {
     const oldCampaignData = campaignGenerateContactList.data(defaultData);
     const newCampaignData = campaignGenerateContactList.data(defaultData);
     cy.api_createCampaign(oldCampaignData, "generate contact list");
-    cy.wait(60000);
-    cy.reload();
+    cy.login();
     campaigns.editCampaigns(
       "generate contact list",
       oldCampaignData,
@@ -76,8 +69,7 @@ describe("Scenario - Smoke - Edit Project", () => {
     });
     const campaignData = campaignGenerateContactList.data(defaultData);
     cy.api_createCampaign(campaignData, "generate contact list");
-    cy.wait(60000);
-    cy.reload();
+    cy.login();
     campaigns.altereStatusOfCampaign(campaignData.campaignName);
     campaigns.deleteCampaignByName(campaignData.campaignName);
   });
