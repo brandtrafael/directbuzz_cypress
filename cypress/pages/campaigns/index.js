@@ -185,6 +185,19 @@ class Campaigns {
     cy.visit(Cypress.config("baseUrl"));
     this.deleteCampaignByName(campaignName);
   }
+
+  seeCampaignContacts(campaignName) {
+    cy.contains(campaignName)
+      .parent()
+      .parent()
+      .parent()
+      .find(".card-footer")
+      .find("#settings-btn")
+      .click();
+    cy.get("li[role='menuitem']").contains("Contatos")
+      .click();
+    cy.url().should("include", "/contacts");
+  }
 }
 
 export default new Campaigns();

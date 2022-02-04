@@ -8,9 +8,24 @@ on:
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
+    container:
+      image: cypress/browsers:node16.5.0-chrome97-ff96
+      options: --user 1001
     steps:
       - uses: actions/checkout@v2
       - uses: cypress-io/github-action@v2
         with:
-          install: yarn install
-          run-tests: npx cypress run --spec "cypress/integration/smoke/**/*.spec.js"
+          record: false
+          browser: chrome
+          headless: true
+          spec: cypress/integration/smoke/**/*.spec.js
+      - uses: actions/upload-artifact@v2
+        if: failure()
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots
+      - uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: cypress-videos
+          path: cypress/videos
